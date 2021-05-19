@@ -13,7 +13,8 @@ export const AvailableAppointmentDetail = ({ appointment, onButtonClick }) => {
       title: "¿Confirma la cita?",
       showConfirmButton: true,
       showCancelButton: true,
-      confirmButtonText: `Eliminar`,
+      confirmButtonText: "Si, agendar",
+      cancelButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Cita Agendada", "", "success");
@@ -37,7 +38,7 @@ export const AvailableAppointmentDetail = ({ appointment, onButtonClick }) => {
 
   return (
     <li className="list-group-item">
-      <FontAwesomeIcon icon={faClock} className="mr-3" size="lg"/>
+      <FontAwesomeIcon icon={faClock} className="mr-3" size="lg" />
       {format(Date.parse(appointment.appointmentDate), "kk:mm")}
       <button type="button" className="btn btn-primary ml-3" onClick={onClick}>
         Agendar

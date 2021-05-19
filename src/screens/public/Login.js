@@ -35,10 +35,10 @@ export const Login = () => {
 
   return (
     <div className="d-flex justify-content-center">
-      <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-4">
+      <div className="col-4">
         <div className="card">
           <div className="card-body">
-            <h4 className="card-title mb-4 mt-1">Ingresar a la Aplicación</h4>
+            <h4 className="card-title mb-4 mt-1">AgendaMatic</h4>
             <form onSubmit={onHandleSubmit}>
               <div className="form-group">
                 <label>Email</label>
