@@ -16,18 +16,26 @@ export const Login = () => {
   const onHandleSubmit = async (e) => {
     e.preventDefault();
 
-    const rawResponse = await fetchNoToken("Users/login", values, "POST");
-    const content = await rawResponse.json();
+    try {
+      const rawResponse = await fetchNoToken("Users/login", values, "POST");
+      const content = await rawResponse.json();
 
-    if (rawResponse.status === 200) {
-      localStorage.setItem("userId", content.userId);
-      localStorage.setItem("email", content.email);
-      history.push("/panel");
-    } else {
+      if (rawResponse.status === 200) {
+        localStorage.setItem("userId", content.userId);
+        localStorage.setItem("email", content.email);
+        history.push("/panel");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Errores de autenticación:",
+          text: "Usuario y/o password incorrectos",
+          confirmButtonText: "Aceptar",
+        });
+      }
+    } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Errores de autenticación:",
-        text: "Usuario y/o password incorrectos",
+        title: "Error de conección:",
         confirmButtonText: "Aceptar",
       });
     }
